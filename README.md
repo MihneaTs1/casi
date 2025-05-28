@@ -13,7 +13,7 @@ flowchart TD
         C -->|window + shot| PB(Prompt&nbsp;Builder)
         ChatInput[Chatbot UI] -->|user chat| PB
     end
-    PB --> DE[⚖️ Decision Engine]
+    PB --> DE[Decision Engine]
     DE -->|local| LL(Local 7‑B LLM)
     DE -->|cloud| CL(Cloud LLM ‑ GPT‑4o)
     LL --> UI[Overlay / Chat Panel]
