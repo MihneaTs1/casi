@@ -6,17 +6,17 @@
 ## 1  Architecture (30‑s view)
 ```mermaid
 flowchart TD
-    A[⏩ Hot‑key / Snapshot] -->|keystrokes| L[🎹 Listener]
-    L --> C[🖼️ Context&nbsp;Collector]
+    A[Hot‑key / Snapshot] -->|keystrokes| L[Listener]
+    L --> C[Context&nbsp;Collector]
     subgraph Input[ ]
         direction TB
         C -->|window + shot| PB(Prompt&nbsp;Builder)
-        ChatInput[💬 Chatbot UI] -->|user chat| PB
+        ChatInput[Chatbot UI] -->|user chat| PB
     end
     PB --> DE[⚖️ Decision Engine]
     DE -->|local| LL(Local 7‑B LLM)
     DE -->|cloud| CL(Cloud LLM ‑ GPT‑4o)
-    LL --> UI[🔍 Overlay / Chat Panel]
+    LL --> UI[Overlay / Chat Panel]
     CL --> UI
 ```
 *Icons for quick context; Mermaid renders clean boxes and arrows.*
