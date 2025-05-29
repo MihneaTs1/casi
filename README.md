@@ -1,6 +1,6 @@
 # CASI – Context‑Aware Assistive Shortcut Interpreter _(v1.7 · 28 May 2025)_
 
-**Mission**  Deliver instant, context‑aware PC help for beginners—triggered by a snapshot hot‑key or a sidebar chatbot—while keeping GPT‑4o spend predictable and latency under a second.
+**Mission**: Deliver instant, context‑aware PC help for beginners—triggered by a snapshot hot‑key or a sidebar chatbot—while keeping GPT‑4o spend predictable and latency under a second.
 
 ---
 ## 1  30‑Second Architecture
