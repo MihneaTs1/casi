@@ -3,7 +3,7 @@
 **Mission**: Deliver instant, context‑aware PC help for beginners—triggered by a snapshot hot‑key or a sidebar chatbot—while keeping GPT‑4o spend predictable and latency under a second.
 
 ---
-## 1  30‑Second Architecture
+## 1.  30‑Second Architecture
 ```mermaid
 flowchart TD
     A[Hot-key / Snapshot] --> L[Listener]
@@ -18,7 +18,7 @@ flowchart TD
 ```
 
 ---
-## 2  Captured Context (per snapshot)
+## 2.  Captured Context (per snapshot)
 | Item | Format | Typical Size |
 |------|--------|--------------|
 | Keystrokes (last 10 s) | JSON list | ≤ 5 k events |
@@ -27,7 +27,7 @@ flowchart TD
 | Vision caption | 1 sentence | 14 tokens |
 
 ---
-## 3  Routing Logic (v2)
+## 3.  Routing Logic (v2)
 ```text
 value = confidence / (latency + cost)
 → use GPT‑4o if value_cloud > 1.2 × value_local
@@ -36,14 +36,14 @@ value = confidence / (latency + cost)
 * Token predictor (gradient‑boosted) ±8 tokens RMSE
 
 ---
-## 4  Chatbot Sidebar
+## 4.  Chatbot Sidebar
 * Electron panel, docked right, collapsible.  
 * Snapshot context automatically prepended.  
 * Thread capped at 25 messages; old turns summarised locally.  
 * Optional voice input via Whisper‑tiny.
 
 ---
-## 5  Detailed Cost Modelling (GPT‑4o)
+## 5.  Detailed Cost Modelling (GPT‑4o)
 ### 5.1  Assumptions
 | Parameter | Value |
 |-----------|-------|
@@ -78,7 +78,7 @@ Formula:
 :** Every 10‑percentage‑point drop in cloud routing saves ~\$17 / month per 1 000 users.
 
 ---
-## 6  Top Optimisation Levers
+## 6.  Top Optimisation Levers
 1. **Semantic cache** (FAISS) – cut cloud calls ≤ 35 %.  
 2. **Early‑exit heads** – 10–25 % token cut.  
 3. **Nightly self‑distillation** – steady cloud‑ratio decline.  
@@ -86,13 +86,13 @@ Formula:
 5. **Rulebook** – zero‑token answers for common OS dialogs.
 
 ---
-## 7  Security & Privacy
+## 7.  Security & Privacy
 * AES‑GCM encryption for screenshots + chat DB.  
 * Differential‑privacy noise on keystrokes > 24 h.  
 * Salted SHA‑256 user IDs (opt‑in telemetry).
 
 ---
-## 8  Roadmap (next 16 weeks)
+## 8.  Roadmap (next 16 weeks)
 | Week | Milestone |
 |------|-----------|
 | 0–4 | MVP – snapshot → local LLM |
@@ -102,7 +102,7 @@ Formula:
 | 15–16| Beta hardening + installers |
 
 ---
-## 9  Resource Snapshot
+## 9.  Resource Snapshot
 | Component | RAM | CPU % (idle) |
 |-----------|-----|--------------|
 | Listener + tray | 40 MB | < 0.1 % |
@@ -110,6 +110,6 @@ Formula:
 | Local LLM active | +4.1 GB | 70 % peak |
 
 ---
-## 10  References
+## 10.  References
 1. *Mistral‑7B On‑Device Fine‑Tuning*, arXiv 2301.12345 (2024).  
 2. *MiniGPT‑4: Tiny but Mighty*, CVPR 2024.
