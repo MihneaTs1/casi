@@ -104,15 +104,8 @@ def capture_window(win_id: str, save_path: str, geom: dict) -> bool:
     return capture_region(geom, save_path)
 
 
-def main():
-    parser = argparse.ArgumentParser(
-        description='Map all X11 windows to JSON with geometry and per-window screenshots.'
-    )
-    parser.add_argument('--output-dir', type=str, default='window_map',
-                        help='Directory to save screenshots and JSON map.')
-    args = parser.parse_args()
-
-    out_dir = args.output_dir
+def save_window_map():
+    out_dir = "window_map"
     os.makedirs(out_dir, exist_ok=True)
 
     # Enumerate windows
@@ -162,6 +155,3 @@ def main():
     with open(json_path, 'w') as jf:
         json.dump(window_entries, jf, indent=2)
     print(f"Saved JSON map to {json_path}")
-
-if __name__ == '__main__':
-    main()
