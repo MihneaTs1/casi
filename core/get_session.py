@@ -91,8 +91,9 @@ def capture_window(win_id: str, save_path: str, geom: dict) -> bool:
     try:
         xwd = Popen(['xwd', '-silent', '-id', win_id], stdout=subprocess.PIPE)
         with open(save_path, 'wb') as out:
-            conv = Popen(['convert', 'xwd:-', 'png:-'], stdin=xwd.stdout, stdout=out)
-            xwd.stdout.close()
+            conv = Popen(['magick', 'xwd:-', 'png:-'], stdin=xwd.stdout, stdout=out)
+            if xwd.stdout is not None:
+                xwd.stdout.close()
             conv.communicate()
         if conv.returncode == 0 and is_image_valid(save_path):
             return True
