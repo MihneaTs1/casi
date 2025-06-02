@@ -1,2 +1,4 @@
 mss
 Pillow
+pyobjc
+pygetwindow
