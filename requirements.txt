@@ -1,4 +1,11 @@
+# For screenshots and image validation
+pillow
+# For macOS window and mouse APIs
+pyobjc-framework-Quartz
+pyobjc-framework-AppKit
+# For Linux screenshots (optional, not used on macOS)
 mss
-Pillow
-pyobjc
+# For Linux mouse position (optional, not used on macOS)
+python-xlib
+# For Windows window enumeration (optional, not used on macOS)
 pygetwindow
